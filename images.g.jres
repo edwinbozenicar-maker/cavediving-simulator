@@ -1,0 +1,17 @@
+{
+    "image2": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8AAAAAAADwAAAAAAAAAA8AAAAAAACQmZmZ/w+wuJCZmZkAALC7m5mZmQAAsLiQmZmZAAAAAJCZmZn/DwAAAA8AAAAAAAAA8AAAAAAAAAAADwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Lubert baseform"
+    },
+    "image1": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAANANAAAAAAAADdDdAAAAAAAAAAANAAAAAAAAANAAANAAkJkA0AAADQCZmQkAAAANkJmZmQAAAA2QmZmZAAAADZCZmZkADQANAJmZCQANAN0AkJkA0A0A0A0AAAANAAAAAADd3QAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Lubert Rollform"
+    },
+    "*": {
+        "mimeType": "image/x-mkcd-f4",
+        "dataEncoding": "base64",
+        "namespace": "myImages"
+    }
+}
