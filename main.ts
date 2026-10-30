@@ -14,12 +14,15 @@ controller.up.onEvent(ControllerButtonEvent.Released, function () {
     // normales Bild
     lubert.setImage(assets.image`Lubert baseform`)
     rollen_aktiv = 0
+    rollen_möglich = 0
 })
 // Oben: Bücken
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
-    // Bild "Bücken" einsetzen
-    lubert.setImage(assets.image`Lubert Rollform`)
-    rollen_aktiv = 1
+    if (rollen_möglich == 1) {
+        // Bild "Bücken" einsetzen
+        lubert.setImage(assets.image`Lubert Rollform`)
+        rollen_aktiv = 1
+    }
 })
 // Links laufen
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -40,6 +43,7 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
 controller.right.onEvent(ControllerButtonEvent.Released, function () {
     lubert.vx = 0
 })
+let rollen_möglich = 0
 let rollen_aktiv = 0
 let lubert: Sprite = null
 lubert = sprites.create(img`
@@ -185,3 +189,6 @@ scene.setBackgroundImage(img`
     bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
     bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
     `)
+game.onUpdateInterval(5000, function () {
+    rollen_möglich = 1
+})
