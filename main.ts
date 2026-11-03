@@ -1,6 +1,6 @@
 controller.down.onEvent(ControllerButtonEvent.Released, function () {
     // normales Bild
-    lubert.setImage(image.create(16, 16))
+    lubert.setImage(assets.image`Lubert baseform`)
 })
 // A: Jump
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -27,6 +27,24 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
 // Links laufen
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     lubert.vx = -80
+    lubert = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . d d d . . . . . . . 
+        . . . . . . 8 d d . . . . . . . 
+        . . . . . . d d d . . . . . . . 
+        . . . . . 9 9 9 9 9 . . . . . . 
+        . . . . . 9 9 f 9 9 . . . . . . 
+        . . . . . 9 f 9 9 9 . . . . . . 
+        . . . . . f 9 9 9 9 f . . . . . 
+        . . . . f 9 9 9 9 9 . f . . . . 
+        . . . f . 9 9 f 9 9 . . f . . . 
+        . . . . . . f . f . . . . . . . 
+        . . . . . f . . . f . . . . . . 
+        . . . . f . . . . . f . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.Player)
 })
 // Unten: Rollen
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -35,6 +53,24 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 controller.left.onEvent(ControllerButtonEvent.Released, function () {
     lubert.vx = 0
+    lubert = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . b b b . . . . . . . 
+        . . . . . . 8 b 8 . . . . . . . 
+        . . . . . . b b b . . . . . . . 
+        . . . . . . . b . . . . . . . . 
+        . . . . . 9 9 9 9 9 . . . . . . 
+        . . . . f 9 9 9 9 9 f . . . . . 
+        . . . f . 9 9 9 9 9 . f . . . . 
+        . . f . . 9 9 9 9 9 . . f . . . 
+        . . . . . 9 9 9 9 9 . . . . . . 
+        . . . . . 9 9 9 9 9 . . . . . . 
+        . . . . . 9 9 9 9 9 . . . . . . 
+        . . . . . f . . . f . . . . . . 
+        . . . . . f . . . f . . . . . . 
+        . . . . . f . . . f . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.Player)
 })
 // Rechts laufen
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
