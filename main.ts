@@ -1,93 +1,15 @@
-controller.down.onEvent(ControllerButtonEvent.Released, function () {
-    // normales Bild
-    lubert.setImage(assets.image`Lubert baseform`)
-})
-// A: Jump
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (rollen_aktiv == 0) {
-        if (lubert.isHittingTile(CollisionDirection.Bottom)) {
-            lubert.vy = -150
-        }
+    if (lubert.vy == 0) {
+        lubert.vy = -150
     }
 })
-controller.up.onEvent(ControllerButtonEvent.Released, function () {
-    // normales Bild
-    lubert.setImage(assets.image`Lubert baseform`)
-    rollen_aktiv = 0
-    rollen_möglich = 0
-})
-// Oben: Bücken
-controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (rollen_möglich == 1) {
-        // Bild "Bücken" einsetzen
-        lubert.setImage(assets.image`Lubert Rollform`)
-        rollen_aktiv = 1
-    }
-})
-// Links laufen
-controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
-    lubert.vx = -80
-    lubert = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . d d d . . . . . . . 
-        . . . . . . 8 d d . . . . . . . 
-        . . . . . . d d d . . . . . . . 
-        . . . . . 9 9 9 9 9 . . . . . . 
-        . . . . . 9 9 f 9 9 . . . . . . 
-        . . . . . 9 f 9 9 9 . . . . . . 
-        . . . . . f 9 9 9 9 f . . . . . 
-        . . . . f 9 9 9 9 9 . f . . . . 
-        . . . f . 9 9 f 9 9 . . f . . . 
-        . . . . . . f . f . . . . . . . 
-        . . . . . f . . . f . . . . . . 
-        . . . . f . . . . . f . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `, SpriteKind.Player)
-})
-// Unten: Rollen
-controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
-    // Bild "Rollen" einsetzen
-    lubert.setImage(image.create(12, 12))
-})
-controller.left.onEvent(ControllerButtonEvent.Released, function () {
-    lubert.vx = 0
-    lubert = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . b b b . . . . . . . 
-        . . . . . . 8 b 8 . . . . . . . 
-        . . . . . . b b b . . . . . . . 
-        . . . . . . . b . . . . . . . . 
-        . . . . . 9 9 9 9 9 . . . . . . 
-        . . . . f 9 9 9 9 9 f . . . . . 
-        . . . f . 9 9 9 9 9 . f . . . . 
-        . . f . . 9 9 9 9 9 . . f . . . 
-        . . . . . 9 9 9 9 9 . . . . . . 
-        . . . . . 9 9 9 9 9 . . . . . . 
-        . . . . . 9 9 9 9 9 . . . . . . 
-        . . . . . f . . . f . . . . . . 
-        . . . . . f . . . f . . . . . . 
-        . . . . . f . . . f . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `, SpriteKind.Player)
-})
-// Rechts laufen
-controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
-    lubert.vx = 80
-})
-controller.right.onEvent(ControllerButtonEvent.Released, function () {
-    lubert.vx = 0
-})
-let rollen_möglich = 0
-let rollen_aktiv = 0
 let lubert: Sprite = null
 lubert = sprites.create(img`
     . . . . . . . . . . . . . . . . 
-    . . . . . . b b b . . . . . . . 
-    . . . . . . 8 b 8 . . . . . . . 
-    . . . . . . b b b . . . . . . . 
-    . . . . . . . b . . . . . . . . 
+    . . . . . . d d d . . . . . . . 
+    . . . . . . 8 d 8 . . . . . . . 
+    . . . . . . d d d . . . . . . . 
+    . . . . . . . d . . . . . . . . 
     . . . . . 9 9 9 9 9 . . . . . . 
     . . . . f 9 9 9 9 9 f . . . . . 
     . . . f . 9 9 9 9 9 . f . . . . 
@@ -225,6 +147,47 @@ scene.setBackgroundImage(img`
     bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
     bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
     `)
-game.onUpdateInterval(5000, function () {
-    rollen_möglich = 1
+controller.moveSprite(lubert, 100, 0)
+game.onUpdate(function () {
+    if (lubert.vx == 100) {
+        lubert.setImage(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . d d d . . . . . . . 
+            . . . . . . d d 8 . . . . . . . 
+            . . . . . . d d d . . . . . . . 
+            . . . . . 9 9 9 9 9 . . . . . . 
+            . . . . . 9 9 9 f 9 . . . . . . 
+            . . . . . 9 9 9 9 f . . . . . . 
+            . . . . . f 9 9 9 9 f . . . . . 
+            . . . . f 9 9 9 9 9 . f . . . . 
+            . . . f . 9 9 f 9 9 . . f . . . 
+            . . . . . . f . f . . . . . . . 
+            . . . . . f . . . f . . . . . . 
+            . . . . f . . . . . f . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `)
+    } else if (lubert.vx == -100) {
+        lubert.setImage(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . d d d . . . . . . . 
+            . . . . . . 8 d d . . . . . . . 
+            . . . . . . d d d . . . . . . . 
+            . . . . . 9 9 9 9 9 . . . . . . 
+            . . . . . 9 9 f 9 9 . . . . . . 
+            . . . . . 9 f 9 9 9 . . . . . . 
+            . . . . . f 9 9 9 9 f . . . . . 
+            . . . . f 9 9 9 9 9 . f . . . . 
+            . . . f . 9 9 f 9 9 . . f . . . 
+            . . . . . . f . f . . . . . . . 
+            . . . . . f . . . f . . . . . . 
+            . . . . f . . . . . f . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `)
+    } else {
+        lubert.setImage(assets.image`Lubert baseform`)
+    }
 })
