@@ -1,39 +1,19 @@
+namespace SpriteKind {
+    export const Trap = SpriteKind.create()
+}
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (lubert.vy == 0) {
         lubert.vy = -130
     }
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
-    Arrow.setImage(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        d . . . . . . . . . . . . . . . 
-        . d . . . . . . . . . . 1 . . . 
-        . . d . . . . . . . . . 7 1 . . 
-        . . . d f f f f f f f f 7 7 1 . 
-        . . d . . . . . . . . . 7 7 . . 
-        . d . . . . . . . . . . 7 . . . 
-        d . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `)
-    Arrow.setPosition(76, 51)
-    Arrow.follow(lubert, 500)
-})
-scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava0, function (sprite, location) {
-    game.gameOver(false)
-})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
-    info.changeScoreBy(-1)
-    sprites.destroy(Arrow, effects.fire, 200)
+    info.changeLifeBy(-1)
+    sprites.destroy(otherSprite, effects.fire, 200)
 })
-scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava1, function (sprite, location) {
-    game.gameOver(false)
+scene.onOverlapTile(SpriteKind.Player, sprites.builtin.forestTiles8, function (sprite, location) {
+    Arrow = sprites.create(assets.image`Poisonarrow Prototype`, SpriteKind.Projectile)
+    Arrow.setPosition(0, lubert.y)
+    Arrow.follow(lubert, 100)
 })
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
 	
@@ -186,24 +166,6 @@ scene.setBackgroundImage(img`
     `)
 controller.moveSprite(lubert, 100, 0)
 info.setLife(10)
-Arrow = sprites.create(img`
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    c . . . . . . . . . . . . . . . 
-    . c . . . . . . . . . . . c . . 
-    . . c . . . . . . . . . . c c . 
-    . . . c c c c c c c c c c c c c 
-    . . c . . . . . . . . . . c c . 
-    . c . . . . . . . . . . . c . . 
-    c . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    `, SpriteKind.Projectile)
 game.onUpdate(function () {
     if (lubert.vx == 100) {
         lubert.setImage(img`
