@@ -9,6 +9,11 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "Lubert Rollform"
     },
+    "image3": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwAAAAAAAPAA8AAAAJCZnwkPAACtnfmZ+QAAAN2dn5kPAAAA3Z2ZmfkAAAAAkJmZCQ8AAAAAAPAA8AAAAAAAAA8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "lubert_linkslaufen"
+    },
     "*": {
         "mimeType": "image/x-mkcd-f4",
         "dataEncoding": "base64",
