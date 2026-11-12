@@ -6,6 +6,14 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         lubert.vy = -130
     }
 })
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
+    if (arrow_möglich == 1) {
+        Arrow = sprites.create(assets.image`Poisonarrow Prototype`, SpriteKind.Projectile)
+        Arrow.setPosition(scene.screenWidth(), lubert.y)
+        Arrow.setVelocity(150, 0)
+        arrow_möglich = 0
+    }
+})
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava0, function (sprite, location) {
     game.gameOver(false)
 })
@@ -19,6 +27,8 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava1, function (sp
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
 	
 })
+let Arrow: Sprite = null
+let arrow_möglich = 0
 let lubert: Sprite = null
 lubert = sprites.create(img`
     . . . . . . . . . . . . . . . . 
@@ -208,4 +218,7 @@ game.onUpdate(function () {
     } else {
         lubert.setImage(assets.image`Lubert baseform`)
     }
+})
+game.onUpdateInterval(2000, function () {
+    arrow_möglich = 1
 })
