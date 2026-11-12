@@ -6,19 +6,19 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         lubert.vy = -130
     }
 })
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava0, function (sprite, location) {
+    game.gameOver(false)
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
     sprites.destroy(otherSprite, effects.fire, 200)
 })
-scene.onOverlapTile(SpriteKind.Player, sprites.builtin.forestTiles8, function (sprite, location) {
-    Arrow = sprites.create(assets.image`Poisonarrow Prototype`, SpriteKind.Projectile)
-    Arrow.setPosition(0, lubert.y)
-    Arrow.follow(lubert, 100)
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava1, function (sprite, location) {
+    game.gameOver(false)
 })
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
 	
 })
-let Arrow: Sprite = null
 let lubert: Sprite = null
 lubert = sprites.create(img`
     . . . . . . . . . . . . . . . . 
@@ -162,7 +162,7 @@ scene.setBackgroundImage(img`
     cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
     cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
     cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
-    cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+    ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc3
     `)
 controller.moveSprite(lubert, 100, 0)
 info.setLife(10)
