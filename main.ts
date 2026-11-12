@@ -28,8 +28,9 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
 	
 })
 let Arrow: Sprite = null
-let arrow_möglich = 0
 let lubert: Sprite = null
+let arrow_möglich = 0
+arrow_möglich = 1
 lubert = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . d d d . . . . . . . 
@@ -218,6 +219,9 @@ game.onUpdate(function () {
     } else {
         lubert.setImage(assets.image`Lubert baseform`)
     }
+})
+game.onUpdateInterval(5000, function () {
+    sprites.destroy(Arrow, effects.trail, 200)
 })
 game.onUpdateInterval(2000, function () {
     arrow_möglich = 1
