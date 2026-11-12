@@ -9,15 +9,15 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "lubert_linkslaufen"
     },
-    "image2": {
-        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8AAAAAAADwAAAAAAAAAA8AAAAAAACQmZmZ/w/Q2JCZmZkAANDdnZmZmQAA0NiQmZmZAAAAAJCZmZn/DwAAAA8AAAAAAAAA8AAAAAAAAAAADwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-        "mimeType": "image/x-mkcd-f4",
-        "displayName": "Lubert baseform"
-    },
     "image4": {
         "data": "hwQQABAAAAAAAADgAAAAAAAAAOAAAAAAAAAA4AAAAAAAAAfgAHAAAAAAAOAAAAAAAAAA4AAHAAAAAHDgAAAAAAAAAOAAcAAAAAAH4AAAAAAAABcREQcAAAAAFxERBwAAAABwEXEAAAAAAAAXBwAAAAAAAHAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "Poisonarrow Prototype"
+    },
+    "image2": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8AAAAAAADwAAAAAAAAAA8AAAAAAACQmZmZ/w/Q2JCZmZkAANDdnZmZmQAA0NiQmZmZAAAAAJCZmZn/DwAAAA8AAAAAAAAA8AAAAAAAAAAADwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Lubert baseform"
     },
     "*": {
         "mimeType": "image/x-mkcd-f4",
