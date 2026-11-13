@@ -6,6 +6,12 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         lubert.vy = -130
     }
 })
+controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (arrow_möglich == 1) {
+        lubert.setImage(assets.image`Lubert Rollform`)
+        rollen_aktiv = 1
+    }
+})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
     if (arrow_möglich == 1) {
         Arrow = sprites.create(assets.image`Poisonarrow Prototype`, SpriteKind.Projectile)
@@ -28,6 +34,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
 	
 })
 let Arrow: Sprite = null
+let rollen_aktiv = 0
 let lubert: Sprite = null
 let arrow_möglich = 0
 arrow_möglich = 1
