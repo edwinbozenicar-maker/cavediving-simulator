@@ -41,6 +41,7 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava1, function (sp
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
 	
 })
+let invulnerability_potion: Sprite = null
 let Arrow: Sprite = null
 let rollen_möglich = 0
 let rollen_aktiv = 0
@@ -193,6 +194,7 @@ scene.setBackgroundImage(img`
     `)
 controller.moveSprite(lubert, 100, 0)
 info.setLife(10)
+let unverwundbar = false
 game.onUpdate(function () {
     if (rollen_aktiv == 1) {
         lubert.setImage(assets.image`Lubert Rollform`)
@@ -254,4 +256,25 @@ game.onUpdateInterval(1, function () {
     if (rollen_aktiv == 1) {
         lubert.vy = 300
     }
+})
+game.onUpdateInterval(30000, function () {
+    invulnerability_potion = sprites.create(img`
+        . . . . . . 1 1 1 1 1 . . . . . 
+        . . . . . . 1 . . . 1 . . . . . 
+        . . . . . . 1 . . . 1 . . . . . 
+        . . . . . 1 . . . . . 1 . . . . 
+        . . . . 1 5 5 5 5 5 5 5 1 . . . 
+        . . . 1 5 5 5 5 5 5 5 5 5 1 . . 
+        . . . 1 5 5 5 5 5 5 5 5 5 1 . . 
+        . . . 1 5 5 5 9 9 9 5 5 5 1 . . 
+        . . . 1 5 5 5 9 9 9 5 5 5 1 . . 
+        . . . 1 5 5 5 9 9 9 5 5 5 1 . . 
+        . . . 1 5 5 5 5 9 5 5 5 5 1 . . 
+        . . . 1 5 5 5 5 5 5 5 5 5 1 . . 
+        . . . 1 5 5 5 5 5 5 5 5 5 1 . . 
+        . . . 1 5 5 5 5 5 5 5 5 5 1 . . 
+        . . . 1 1 1 1 1 1 1 1 1 1 1 . . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.Food)
+    invulnerability_potion.setPosition(lubert.x + 10, lubert.y)
 })
