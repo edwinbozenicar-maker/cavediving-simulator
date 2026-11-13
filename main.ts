@@ -178,7 +178,7 @@ scene.setBackgroundImage(img`
 controller.moveSprite(lubert, 100, 0)
 info.setLife(10)
 game.onUpdate(function () {
-    if ((0 as any) == (100 as any)) {
+    if (lubert.vx == 100) {
         lubert.setImage(img`
             . . . . . . d d d . . . . . . . 
             . . . . . . d d 8 . . . . . . . 
