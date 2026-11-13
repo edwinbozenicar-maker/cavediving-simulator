@@ -13,6 +13,14 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     if (rollen_möglich == 1) {
         rollen_möglich = 0
         rollen_aktiv = 1
+controller.up.onEvent(ControllerButtonEvent.Released, function () {
+    rollen_aktiv = 0
+})
+controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (rollen_möglich == 1) {
+        lubert.setImage(assets.image`Lubert Rollform`)
+        rollen_aktiv = 1
+        rollen_möglich = 0
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
@@ -236,6 +244,14 @@ game.onUpdateInterval(5000, function () {
 game.onUpdateInterval(5000, function () {
     sprites.destroy(Arrow, effects.trail, 200)
 })
+game.onUpdateInterval(5000, function () {
+    rollen_möglich = 1
+})
 game.onUpdateInterval(2000, function () {
     arrow_möglich = 1
+})
+game.onUpdateInterval(1, function () {
+    if (rollen_aktiv == 1) {
+        lubert.vy = 300
+    }
 })
