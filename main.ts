@@ -1,18 +1,9 @@
 namespace SpriteKind {
     export const Trap = SpriteKind.create()
 }
-controller.A.onEvent(ControllerButtonEvent.Released, function () {
-    rollen_aktiv = 0
-})
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (lubert.vy == 0) {
         lubert.vy = -130
-    }
-})
-controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (rollen_möglich == 1) {
-        rollen_möglich = 0
-        rollen_aktiv = 1
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
@@ -22,6 +13,9 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, lo
         Arrow.setVelocity(150, 0)
         arrow_möglich = 0
     }
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava0, function (sprite, location) {
+    game.gameOver(false)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
@@ -34,8 +28,6 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
 	
 })
 let Arrow: Sprite = null
-let rollen_möglich = 0
-let rollen_aktiv = 0
 let lubert: Sprite = null
 let arrow_möglich = 0
 arrow_möglich = 1
@@ -186,9 +178,7 @@ scene.setBackgroundImage(img`
 controller.moveSprite(lubert, 100, 0)
 info.setLife(10)
 game.onUpdate(function () {
-    if (rollen_aktiv == 1) {
-        lubert.setImage(assets.image`Lubert Rollform`)
-    } else if (lubert.vx == 100) {
+    if ((0 as any) == (100 as any)) {
         lubert.setImage(img`
             . . . . . . d d d . . . . . . . 
             . . . . . . d d 8 . . . . . . . 
@@ -229,9 +219,6 @@ game.onUpdate(function () {
     } else {
         lubert.setImage(assets.image`Lubert baseform`)
     }
-})
-game.onUpdateInterval(5000, function () {
-    rollen_möglich = 1
 })
 game.onUpdateInterval(5000, function () {
     sprites.destroy(Arrow, effects.trail, 200)
