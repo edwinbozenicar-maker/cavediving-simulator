@@ -1,6 +1,11 @@
 namespace SpriteKind {
     export const Trap = SpriteKind.create()
+    export const invulnerability_Potion = SpriteKind.create()
 }
+sprites.onOverlap(SpriteKind.Player, SpriteKind.invulnerability_Potion, function (sprite, otherSprite) {
+    sprites.destroy(otherSprite, effects.warmRadial, 1000)
+    unverwundbar = true
+})
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (lubert.vy == 0) {
         lubert.vy = -130
@@ -41,6 +46,7 @@ let invulnerability_potion: Sprite = null
 let Arrow: Sprite = null
 let rollen_möglich = 0
 let rollen_aktiv = 0
+let unverwundbar = false
 let lubert: Sprite = null
 let arrow_möglich = 0
 arrow_möglich = 1
@@ -190,7 +196,7 @@ scene.setBackgroundImage(img`
     `)
 controller.moveSprite(lubert, 100, 0)
 info.setLife(10)
-let unverwundbar = false
+unverwundbar = false
 game.onUpdate(function () {
     if (rollen_aktiv == 1) {
         lubert.setImage(assets.image`Lubert Rollform`)
@@ -210,7 +216,7 @@ game.onUpdate(function () {
             . . . . . . f . f . . . . . . . 
             . . . . . f . . . f . . . . . . 
             . . . . f . . . . . f . . . . . 
-            . . . . . . . . . . . . . . . . 
+            . . . f . . . . . . . f . . . . 
             . . . . . . . . . . . . . . . . 
             `)
     } else if (lubert.vx == -100) {
@@ -229,7 +235,7 @@ game.onUpdate(function () {
             . . . . . . f . f . . . . . . . 
             . . . . . f . . . f . . . . . . 
             . . . . f . . . . . f . . . . . 
-            . . . . . . . . . . . . . . . . 
+            . . . f . . . . . . . f . . . . 
             . . . . . . . . . . . . . . . . 
             `)
     } else {
@@ -251,23 +257,8 @@ game.onUpdateInterval(1, function () {
     }
 })
 game.onUpdateInterval(30000, function () {
-    invulnerability_potion = sprites.create(img`
-        . . . . . . 1 1 1 1 1 . . . . . 
-        . . . . . . 1 . . . 1 . . . . . 
-        . . . . . . 1 . . . 1 . . . . . 
-        . . . . . 1 . . . . . 1 . . . . 
-        . . . . 1 5 5 5 5 5 5 5 1 . . . 
-        . . . 1 5 5 5 5 5 5 5 5 5 1 . . 
-        . . . 1 5 5 5 5 5 5 5 5 5 1 . . 
-        . . . 1 5 5 5 9 9 9 5 5 5 1 . . 
-        . . . 1 5 5 5 9 9 9 5 5 5 1 . . 
-        . . . 1 5 5 5 9 9 9 5 5 5 1 . . 
-        . . . 1 5 5 5 5 9 5 5 5 5 1 . . 
-        . . . 1 5 5 5 5 5 5 5 5 5 1 . . 
-        . . . 1 5 5 5 5 5 5 5 5 5 1 . . 
-        . . . 1 5 5 5 5 5 5 5 5 5 1 . . 
-        . . . 1 1 1 1 1 1 1 1 1 1 1 . . 
-        . . . . . . . . . . . . . . . . 
-        `, SpriteKind.Food)
-    invulnerability_potion.setPosition(lubert.x + 10, lubert.y)
+    if (game.runtime() >= 30000) {
+        invulnerability_potion = sprites.create(assets.image`Invulnerability_Potion`, SpriteKind.invulnerability_Potion)
+        invulnerability_potion.setPosition(lubert.x + 10, lubert.y)
+    }
 })
