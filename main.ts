@@ -1,18 +1,11 @@
 namespace SpriteKind {
     export const Trap = SpriteKind.create()
 }
-controller.A.onEvent(ControllerButtonEvent.Released, function () {
-    rollen_aktiv = 0
-})
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (lubert.vy == 0) {
         lubert.vy = -130
     }
 })
-controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (rollen_möglich == 1) {
-        rollen_möglich = 0
-        rollen_aktiv = 1
 controller.up.onEvent(ControllerButtonEvent.Released, function () {
     rollen_aktiv = 0
 })
@@ -30,6 +23,9 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, lo
         Arrow.setVelocity(150, 0)
         arrow_möglich = 0
     }
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava0, function (sprite, location) {
+    game.gameOver(false)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
@@ -241,9 +237,6 @@ game.onUpdate(function () {
     }
 })
 game.onUpdateInterval(5000, function () {
-    rollen_möglich = 1
-})
-game.onUpdateInterval(5000, function () {
     sprites.destroy(Arrow, effects.trail, 200)
 })
 game.onUpdateInterval(5000, function () {
@@ -258,25 +251,23 @@ game.onUpdateInterval(1, function () {
     }
 })
 game.onUpdateInterval(30000, function () {
-    if (game.runtime() >= 30000) {
-        invulnerability_potion = sprites.create(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . 1 1 . . . . . . . 
-            . . . . . . 1 5 5 1 . . . . . . 
-            . . . . . 1 5 9 9 5 1 . . . . . 
-            . . . . . 1 5 9 9 5 1 . . . . . 
-            . . . . . 1 5 5 5 5 1 . . . . . 
-            . . . . . 1 1 1 1 1 1 . . . . . 
-            `, SpriteKind.Food)
-        invulnerability_potion.setPosition(lubert.x + 30, lubert.y)
-    }
+    invulnerability_potion = sprites.create(img`
+        . . . . . . 1 1 1 1 1 . . . . . 
+        . . . . . . 1 . . . 1 . . . . . 
+        . . . . . . 1 . . . 1 . . . . . 
+        . . . . . 1 . . . . . 1 . . . . 
+        . . . . 1 5 5 5 5 5 5 5 1 . . . 
+        . . . 1 5 5 5 5 5 5 5 5 5 1 . . 
+        . . . 1 5 5 5 5 5 5 5 5 5 1 . . 
+        . . . 1 5 5 5 9 9 9 5 5 5 1 . . 
+        . . . 1 5 5 5 9 9 9 5 5 5 1 . . 
+        . . . 1 5 5 5 9 9 9 5 5 5 1 . . 
+        . . . 1 5 5 5 5 9 5 5 5 5 1 . . 
+        . . . 1 5 5 5 5 5 5 5 5 5 1 . . 
+        . . . 1 5 5 5 5 5 5 5 5 5 1 . . 
+        . . . 1 5 5 5 5 5 5 5 5 5 1 . . 
+        . . . 1 1 1 1 1 1 1 1 1 1 1 . . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.Food)
+    invulnerability_potion.setPosition(lubert.x + 10, lubert.y)
 })
