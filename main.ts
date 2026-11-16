@@ -5,6 +5,7 @@ namespace SpriteKind {
 sprites.onOverlap(SpriteKind.Player, SpriteKind.invulnerability_Potion, function (sprite, otherSprite) {
     sprites.destroy(otherSprite, effects.warmRadial, 1000)
     unverwundbar = true
+    game.splash("Du bist für 15 Sekunden unverwundbar!!!")
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (lubert.vy == 0) {
@@ -33,14 +34,23 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava0, function (sp
     game.gameOver(false)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
-    info.changeLifeBy(-1)
-    sprites.destroy(otherSprite, effects.fire, 200)
+    if (unverwundbar == false) {
+        info.changeLifeBy(-1)
+        sprites.destroy(otherSprite, effects.fire, 200)
+    }
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava1, function (sprite, location) {
     game.gameOver(false)
 })
-controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
-	
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+    if (rollen_aktiv == 1) {
+        sprites.destroy(otherSprite, effects.confetti, 500)
+    } else if (unverwundbar == true) {
+    	
+    } else {
+        sprites.destroy(otherSprite, effects.ashes, 500)
+        info.changeLifeBy(-1)
+    }
 })
 let Tymothy: Sprite = null
 let invulnerability_potion: Sprite = null
@@ -73,7 +83,7 @@ lubert.ay = 300
 lubert.setPosition(25, 0)
 tiles.setCurrentTilemap(tilemap`Level 1 template`)
 scene.cameraFollowSprite(lubert)
-let spiinndildo = 5
+let Spinnenspawn = 5
 scene.setBackgroundImage(img`
     cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
     cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
@@ -250,6 +260,11 @@ game.onUpdateInterval(5000, function () {
 game.onUpdateInterval(5000, function () {
     rollen_möglich = 1
 })
+game.onUpdateInterval(15000, function () {
+    if (unverwundbar == true) {
+        unverwundbar = false
+    }
+})
 game.onUpdateInterval(2000, function () {
     arrow_möglich = 1
 })
@@ -265,8 +280,9 @@ game.onUpdateInterval(30000, function () {
     }
 })
 game.onUpdateInterval(500, function () {
-    if (randint(0, 10) == spiinndildo) {
+    if (randint(0, 10) == Spinnenspawn) {
         Tymothy = sprites.create(assets.image`Tymothy`, SpriteKind.Enemy)
-        Tymothy.setPosition(lubert.x - 36, lubert.y)
+        Tymothy.setPosition(lubert.x - 50, lubert.y)
+        Tymothy.follow(lubert, 50)
     }
 })
