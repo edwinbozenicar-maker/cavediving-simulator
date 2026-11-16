@@ -42,6 +42,7 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava1, function (sp
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
 	
 })
+let Tymothy: Sprite = null
 let invulnerability_potion: Sprite = null
 let Arrow: Sprite = null
 let rollen_möglich = 0
@@ -72,6 +73,7 @@ lubert.ay = 300
 lubert.setPosition(25, 0)
 tiles.setCurrentTilemap(tilemap`Level 1 template`)
 scene.cameraFollowSprite(lubert)
+let spiinndildo = 5
 scene.setBackgroundImage(img`
     cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
     cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
@@ -260,5 +262,11 @@ game.onUpdateInterval(30000, function () {
     if (game.runtime() >= 30000) {
         invulnerability_potion = sprites.create(assets.image`Invulnerability_Potion`, SpriteKind.invulnerability_Potion)
         invulnerability_potion.setPosition(lubert.x + 10, lubert.y)
+    }
+})
+game.onUpdateInterval(500, function () {
+    if (randint(0, 10) == spiinndildo) {
+        Tymothy = sprites.create(assets.image`Tymothy`, SpriteKind.Enemy)
+        Tymothy.setPosition(lubert.x - 36, lubert.y)
     }
 })
