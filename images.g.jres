@@ -4,6 +4,16 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "lubert_linkslaufen"
     },
+    "image8": {
+        "data": "hwQQABAAAAAAAAAA/wAAAAAAAP/1AAAAAAD/VfUAAP8A/1VR9QD/Vf9VEVX1/1VFXxFVVVVVVfRfVVVVVVVFD19VVVVVVfQAX1VVVVVFDwBfVVX/VfQAAF9V9fBFDwAAX1UP8PQAAABf9QDwDwAAAF8PAAAAAAAA/wAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "wizard projectile"
+    },
+    "image7": {
+        "data": "hwQQABAAAAAAAAAAAAAAAADwAA8AAAD/AG//+A/w//jw9o/Y/U/0+PD2hk3d+PT48GaGTdSNj/jwaYb91N2N+PBphkTU1N39AJ+G+NTdiPgA8I9I/f/0+AAA8PgP8PT/AAAADwDwDwAAAAAAAO7uDgCICODu7gAAAGjo7gAAAAAAiAgAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Wizard"
+    },
     "image1": {
         "data": "hwQQABAAAAAAAAAAAAAAAAAAANANAAAAAAAADdDdAAAAAAAAAAANAAAAAAAAANAAANAAkJkA0AAADQCZmQkAAAANkJmZmQAAAA2QmZmZAAAADZCZmZkADQANAJmZCQANAN0AkJkA0A0A0A0AAAANAAAAAADd3QAAAAAAAAAAAAAAAAAAAAAAAA==",
         "mimeType": "image/x-mkcd-f4",
@@ -14,6 +24,11 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "Lubert baseform"
     },
+    "image6": {
+        "data": "hwQQABAAAADR8PD/8P8PANHw8AD/AAAA0Q/wAA///wDR//AA/w8AABHx////AAAAAFAvL/IAAABQqv8f8gAAAKWl/y/yAAAAUFr/L/IAAAAAoC8v8gAAABHx////AAAA0f/wAP8AAADRD/AADw8AANEP8AD/8A8A0f/wAPAPAAAA8P//AP8PAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Tymothy"
+    },
     "image5": {
         "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAREQAAAAAAEFUVAAAAABBRVRUAAAAAEJVZFQAAAAAQlZkVAAAAABCVWRUAAAAAEFFVFQAAAAAAEFUVAAAAAAAAEREAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
         "mimeType": "image/x-mkcd-f4",
@@ -23,21 +38,6 @@
         "data": "hwQQABAAAAAAAADgAAAAAAAAAOAAAAAAAAAA4AAAAAAAAAfgAHAAAAAAAOAAAAAAAAAA4AAHAAAAAHDgAAAAAAAAAOAAcAAAAAAH4AAAAAAAABcREQcAAAAAFxERBwAAAABwEXEAAAAAAAAXBwAAAAAAAHAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "Poisonarrow Prototype"
-    },
-    "image6": {
-        "data": "hwQQABAAAADR8PD/8P8PANHw8AD/AAAA0Q/wAA///wDR//AA/w8AABHx////AAAAAFAvL/IAAABQqv8f8gAAAKWl/y/yAAAAUFr/L/IAAAAAoC8v8gAAABHx////AAAA0f/wAP8AAADRD/AADw8AANEP8AD/8A8A0f/wAPAPAAAA8P//AP8PAA==",
-        "mimeType": "image/x-mkcd-f4",
-        "displayName": "Tymothy"
-    },
-    "image8": {
-        "data": "hwQQABAAAAAAAAAA/wAAAAAAAP/1AAAAAAD/VfUAAP8A/1VR9QD/Vf9VEVX1/1VFXxFVVVVVVfRfVVVVVVVFD19VVVVVVfQAX1VVVVVFDwBfVVX/VfQAAF9V9fBFDwAAX1UP8PQAAABf9QDwDwAAAF8PAAAAAAAA/wAAAAAAAAAAAAAAAAAAAA==",
-        "mimeType": "image/x-mkcd-f4",
-        "displayName": "wizard projectile"
-    },
-    "image7": {
-        "data": "hwQQABAAAAAAAAAAAAAAAADwAA8AAAD/AG//+A/w//jw9o/Y/U/0+PD2hk3d+PT48GaGTdSNj/jwaYb91N2N+PBphkTU1N39AJ+G+NTdiPgA8I9I/f/0+AAA8PgP8PT/AAAADwDwDwAAAAAAAO7uDgCICODu7gAAAGjo7gAAAAAAiAgAAAAAAA==",
-        "mimeType": "image/x-mkcd-f4",
-        "displayName": "Wizard"
     },
     "*": {
         "mimeType": "image/x-mkcd-f4",
