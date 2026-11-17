@@ -137,6 +137,9 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.doorOpenSouth, function (
         level_2_dialog = 0
     }
     pause(500)
+    tiles.setCurrentTilemap(tilemap`Level2`)
+    lubert.setPosition(1, 34)
+    in_level_2 = 1
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (lubert.vy == 0) {
@@ -193,6 +196,7 @@ let invulnerability_potion: Sprite = null
 let Arrow: Sprite = null
 let rollen_möglich = 0
 let rollen_aktiv = 0
+let in_level_2 = 0
 let level_2_dialog = 0
 let Magier_Spawn = 0
 let unverwundbar = false
