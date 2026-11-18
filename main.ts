@@ -5,7 +5,7 @@ namespace SpriteKind {
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile0`, function (sprite, location) {
     if (in_level_2 == 1) {
         Wizard = sprites.create(assets.image`Wizard`, SpriteKind.Enemy)
-        Wizard.setPosition(lubert.x + 128, lubert.y)
+        Wizard.setPosition(lubert.x + 150, lubert.y)
         in_level_2 = 0
     }
 })
@@ -198,6 +198,9 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     }
 })
 let Heil_Potion: Sprite = null
+let distanz = 0
+let dy = 0
+let dx = 0
 let Tymothy: Sprite = null
 let invulnerability_potion: Sprite = null
 let Arrow: Sprite = null
@@ -441,8 +444,13 @@ game.onUpdateInterval(1, function () {
         lubert.vy = 300
     }
 })
-game.onUpdateInterval(500, function () {
-	
+game.onUpdateInterval(1500, function () {
+    dx = lubert.x - Wizard.x
+    dy = lubert.y - Wizard.y
+    distanz = Math.sqrt(dx * dx + dy * dy)
+    if (0 < 0 && 0 > 0) {
+    	
+    }
 })
 game.onUpdateInterval(20000, function () {
     if (game.runtime() >= 20000) {
