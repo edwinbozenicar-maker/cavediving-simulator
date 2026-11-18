@@ -198,6 +198,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     }
 })
 let Heil_Potion: Sprite = null
+let Blitz: Sprite = null
 let distanz = 0
 let dy = 0
 let dx = 0
@@ -448,8 +449,8 @@ game.onUpdateInterval(1500, function () {
     dx = lubert.x - Wizard.x
     dy = lubert.y - Wizard.y
     distanz = Math.sqrt(dx * dx + dy * dy)
-    if (0 < 0 && 0 > 0) {
-    	
+    if (distanz > 0 && distanz < 150) {
+        Blitz = sprites.createProjectileFromSprite(assets.image`wizard projectile`, Wizard, dx * 120 / distanz, dy * 120 / distanz)
     }
 })
 game.onUpdateInterval(20000, function () {
