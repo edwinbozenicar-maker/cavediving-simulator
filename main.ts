@@ -2,6 +2,13 @@ namespace SpriteKind {
     export const Trap = SpriteKind.create()
     export const invulnerability_Potion = SpriteKind.create()
 }
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile0`, function (sprite, location) {
+    if (in_level_2 == 1) {
+        Wizard = sprites.create(assets.image`Wizard`, SpriteKind.Enemy)
+        Wizard.setPosition(lubert.x + 128, lubert.y)
+        in_level_2 = 0
+    }
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.invulnerability_Potion, function (sprite, otherSprite) {
     sprites.destroy(otherSprite, effects.warmRadial, 1000)
     unverwundbar = true
@@ -196,6 +203,7 @@ let invulnerability_potion: Sprite = null
 let Arrow: Sprite = null
 let rollen_möglich = 0
 let rollen_aktiv = 0
+let Wizard: Sprite = null
 let in_level_2 = 0
 let level_2_dialog = 0
 let Magier_Spawn = 0
@@ -432,6 +440,9 @@ game.onUpdateInterval(1, function () {
     if (rollen_aktiv == 1) {
         lubert.vy = 300
     }
+})
+game.onUpdateInterval(500, function () {
+	
 })
 game.onUpdateInterval(20000, function () {
     if (game.runtime() >= 20000) {
