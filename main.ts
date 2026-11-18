@@ -185,7 +185,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.wizard, function (sprite, otherS
     } else if (unverwundbar == true) {
     	
     } else {
-    	
+        info.changeLifeBy(-1)
     }
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
