@@ -1,12 +1,16 @@
 namespace SpriteKind {
     export const Trap = SpriteKind.create()
     export const invulnerability_Potion = SpriteKind.create()
+    export const wizard = SpriteKind.create()
 }
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile0`, function (sprite, location) {
     if (in_level_2 == 1) {
-        Wizard = sprites.create(assets.image`Wizard`, SpriteKind.Enemy)
-        Wizard.setPosition(lubert.x + 150, lubert.y)
+        Wizard = sprites.create(assets.image`Wizard`, SpriteKind.wizard)
+        Wizard.setPosition(lubert.x + 300, lubert.y)
         in_level_2 = 0
+        wizard_spawned = true
+        Wizard.ay = 10
+        Wizard_leben = 50
     }
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.invulnerability_Potion, function (sprite, otherSprite) {
@@ -15,6 +19,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.invulnerability_Potion, function
     game.splash("Du bist für 15 Sekunden unverwundbar!!!")
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.doorOpenSouth, function (sprite, location) {
+    Blitz_möglich = 1
     scene.setBackgroundImage(img`
         cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
         cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
@@ -174,6 +179,15 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, lo
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava0, function (sprite, location) {
     game.gameOver(false)
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.wizard, function (sprite, otherSprite) {
+    if (rollen_aktiv == 1) {
+        Wizard_leben += -1
+    } else if (unverwundbar == true) {
+    	
+    } else {
+    	
+    }
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
     if (unverwundbar == false) {
         info.changeLifeBy(-1)
@@ -182,6 +196,10 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, ot
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava1, function (sprite, location) {
     game.gameOver(false)
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.doorClosedSouth, function (sprite, location) {
+    game.splash("Du hast es geschafft!!!", "")
+    game.gameOver(true)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
     sprites.destroy(otherSprite, effects.hearts, 500)
@@ -199,14 +217,14 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
 })
 let Heil_Potion: Sprite = null
 let Blitz: Sprite = null
-let distanz = 0
-let dy = 0
-let dx = 0
 let Tymothy: Sprite = null
 let invulnerability_potion: Sprite = null
 let Arrow: Sprite = null
 let rollen_möglich = 0
 let rollen_aktiv = 0
+let Blitz_möglich = 0
+let Wizard_leben = 0
+let wizard_spawned = false
 let Wizard: Sprite = null
 let in_level_2 = 0
 let level_2_dialog = 0
@@ -445,12 +463,17 @@ game.onUpdateInterval(1, function () {
         lubert.vy = 300
     }
 })
+game.onUpdateInterval(1, function () {
+    if (Wizard_leben == 0) {
+        sprites.destroy(Wizard, effects.confetti, 500)
+        wizard_spawned = false
+    }
+})
 game.onUpdateInterval(1500, function () {
-    dx = lubert.x - Wizard.x
-    dy = lubert.y - Wizard.y
-    distanz = Math.sqrt(dx * dx + dy * dy)
-    if (distanz > 0 && distanz < 150) {
-        Blitz = sprites.createProjectileFromSprite(assets.image`wizard projectile`, Wizard, dx * 120 / distanz, dy * 120 / distanz)
+    if (wizard_spawned == true) {
+        Blitz = sprites.createProjectileFromSprite(assets.image`wizard projectile`, Wizard, 0, 0)
+        Blitz.follow(lubert, 100)
+        Blitz.setBounceOnWall(true)
     }
 })
 game.onUpdateInterval(20000, function () {
